@@ -75,10 +75,10 @@ void T1EventAction::EndOfEventAction(const G4Event* evt)
 				for(auto trackItr: *copyItr.second)
 				{
 					evtOut 	<< " >> TID=" << trackItr->trackID
-						<< " t=" << trackItr->postStepPoint->GetGlobalTime()/ns
-						<< "ns x=" << trackItr->postStepPoint->GetPosition().x()/mm
-						<< "mm y=" << trackItr->postStepPoint->GetPosition().y()/mm
-						<< "mm z=" << trackItr->postStepPoint->GetPosition().z()/mm
+						<< " t=" << trackItr->time/ns
+						<< "ns x=" << trackItr->position.x()/mm
+						<< "mm y=" << trackItr->position.y()/mm
+						<< "mm z=" << trackItr->position.z()/mm
 						<< "mm dE=" << trackItr->deltaEnergy/MeV
 						<< "MeV eD=" << trackItr->energyDeposit/MeV << "MeV" << std::endl;
 				}
