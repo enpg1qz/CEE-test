@@ -17,6 +17,10 @@
 #include "Randomize.hh"
 #include "G4SystemOfUnits.hh"
 
+#include<fstream>
+using namespace std;
+ofstream shuchu;
+
 
 G4double energy = 250*MeV;//T1PrimaryGeneratorAction.cc
 

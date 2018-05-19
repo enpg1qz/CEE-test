@@ -17,6 +17,9 @@ using namespace std;
 #include <G4SystemOfUnits.hh>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+using namespace std;
+extern ofstream shuchu;
+
 T1EventAction::T1EventAction(T1RunAction* runAction)
 : G4UserEventAction(),
   fRunAction(runAction)
@@ -29,8 +32,9 @@ T1EventAction::~T1EventAction()
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-void T1EventAction::BeginOfEventAction(const G4Event*)
+void T1EventAction::BeginOfEventAction(const G4Event* evt)
 {
+  shuchu<<"EventID:  "<<evt->GetEventID()<<endl;
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -39,7 +43,7 @@ void T1EventAction::EndOfEventAction(const G4Event* evt)
 {
 	G4SDManager* SDMan = G4SDManager::GetSDMpointer();
 	if(!SDMan) { G4cerr<<"No SDManager!"<<G4endl;return; }
-	
+
 	G4String fileName = "results/Event" + std::to_string(evt->GetEventID()) + ".txt";
 	std::ofstream evtOut;
 	G4cout << "Outputing result to file " << fileName << G4endl;
@@ -60,7 +64,7 @@ void T1EventAction::EndOfEventAction(const G4Event* evt)
 			std::map<G4int,G4double*>::iterator itr = startTime->GetMap()->GetMap()->begin();
 			for(; itr != startTime->GetMap()->GetMap()->end(); itr++) {
 			  evtOut << " >   copy no.: " << itr->first
-			         << " >> start time: " 
+			         << " >> start time: "
 			         << *(itr->second)/startTime->GetUnitValue()
 			         << " [" << startTime->GetUnit()<<"]"
 			         << std::endl;
