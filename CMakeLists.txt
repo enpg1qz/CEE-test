@@ -60,6 +60,10 @@ file(GLOB datas ${PROJECT_SOURCE_DIR}/data/*.dat)
 #file(MAKE_DIRECTORY [directory1 directory2 ...])
 file(COPY ${datas} DESTINATION ${PROJECT_BINARY_DIR}/data)
 
+#创建result文件夹
+#file(COPY ${PROJECT_SOURCE_DIR}/results DESTINATION ${PROJECT_BINARY_DIR})
+file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/results)
+
 #----------------------------------------------------------------------------
 # For internal Geant4 use - but has no effect if you build this
 # example standalone

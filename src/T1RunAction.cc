@@ -10,9 +10,6 @@
 #include "G4UnitsTable.hh"
 #include "G4SystemOfUnits.hh"
 
-#include<fstream>
-using namespace std;
-extern ofstream shuchu;
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
@@ -33,7 +30,7 @@ void T1RunAction::BeginOfRunAction(const G4Run*)
   // inform the runManager to save random number seed
   G4RunManager::GetRunManager()->SetRandomNumberStore(false);
 
-  shuchu.open("results/shuchu-track1-5-19.txt",ios_base::app);
+
 
 }
 
@@ -41,7 +38,7 @@ void T1RunAction::BeginOfRunAction(const G4Run*)
 
 void T1RunAction::EndOfRunAction(const G4Run*)
 {
-  shuchu.close();
+
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......

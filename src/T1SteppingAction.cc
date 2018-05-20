@@ -72,7 +72,7 @@ void T1SteppingAction::UserSteppingAction(const G4Step* aStep)
   shuchu <<"GetGlobalTime:"<<aStep->GetTrack()->GetGlobalTime()/ns<<"ns"<<"    \n";
   shuchu <<"GetLocalTime:"<<aStep->GetTrack()->GetLocalTime()/ns<<"ns"<<"    \n";
   shuchu <<"GetProperTime:"<<aStep->GetTrack()->GetProperTime()/ns<<"ns"<<"    \n";
-  shuchu <<"GetProperTime:"<<aStep->GetTrack()->GetProperTime()/ns<<"ns"<<"    \n";
+  //shuchu <<"GetProperTime:"<<aStep->GetTrack()->GetProperTime()/ns<<"ns"<<"    \n";
 
 
   G4double len = (aStep->GetStepLength())/mm;

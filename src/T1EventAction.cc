@@ -5,9 +5,7 @@
 #include "G4Event.hh"
 #include "G4RunManager.hh"
 
-#include <fstream>
-using namespace std;
-//extern ofstream shuchu;
+
 
 #include <G4SDManager.hh>
 #include "T1TPCDigi.hh"
@@ -17,6 +15,7 @@ using namespace std;
 #include <G4SystemOfUnits.hh>
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+#include <fstream>
 using namespace std;
 extern ofstream shuchu;
 
@@ -34,6 +33,7 @@ T1EventAction::~T1EventAction()
 
 void T1EventAction::BeginOfEventAction(const G4Event* evt)
 {
+  shuchu.open("results/track1-EventID"+to_string(evt->GetEventID())+".txt",ios_base::app);
   shuchu<<"EventID:  "<<evt->GetEventID()<<endl;
 }
 
@@ -41,6 +41,8 @@ void T1EventAction::BeginOfEventAction(const G4Event* evt)
 
 void T1EventAction::EndOfEventAction(const G4Event* evt)
 {
+  shuchu.close();
+
 	G4SDManager* SDMan = G4SDManager::GetSDMpointer();
 	if(!SDMan) { G4cerr<<"No SDManager!"<<G4endl;return; }
 
